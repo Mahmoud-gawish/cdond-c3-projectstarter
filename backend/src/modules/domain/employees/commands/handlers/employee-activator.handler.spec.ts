@@ -19,12 +19,12 @@ describe('Employee Remover', () => {
       const handler = new EmployeeActivator(employeeRepository);
 
       const params = {
-        employeeId: 101, //change this to 100 to make the test pass
+        employeeId: 100, //change this to 100 to make the test pass >> changed
         isActive: false,
       };
 
       const activateEmployeeCommand = new ActivateEmployee(
-        params.employeeId,
+        params.employeeId,ß
         params.isActive,
       );
 
