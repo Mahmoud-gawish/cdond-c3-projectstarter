@@ -24,7 +24,7 @@ describe('Employee Remover', () => {
       };
 
       const activateEmployeeCommand = new ActivateEmployee(
-        params.employeeId,ß
+        params.employeeId,
         params.isActive,
       );
 
