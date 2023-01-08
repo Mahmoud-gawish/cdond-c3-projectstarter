@@ -1,0 +1,10 @@
+URL01 : https://github.com/Mahmoud-gawish/cdond-c3-projectstarter
+
+URL02 : http://udapeople-03fdb6b.s3-website-us-east-1.amazonaws.com
+
+URL03 : http://d10qnn5n3a4v64.cloudfront.net
+
+URl04 : http://3.89.125.85:3030/api/status
+
+URL05 : http://ec2-3-95-203-125.compute-1.amazonaws.com:9090/targets
+

@@ -440,8 +440,8 @@ jobs:
               then
               echo "---------- Clean-up confirmed ----------"
               aws s3 rm "s3://udapeople-${OLD_WORKFLOW_ID: -7}" --recursive
-              aws cloudformation delete-stack --stack-name "udapeople-backend-${OLD_WORKFLOW_ID: -7}"
-              aws cloudformation delete-stack --stack-name "udapeople-frontend-${OLD_WORKFLOW_ID: -7}"
+              aws cloudformation delete-stack --stack-name "udapeople-backend-${OldWorkflowID}"
+              aws cloudformation delete-stack --stack-name "udapeople-frontend-${OldWorkflowID}"
             else
               echo " ---------- Nothing to Clean-up ----------" 
             fi
@@ -450,8 +450,14 @@ jobs:
 workflows:
   default:
     jobs:
-      - build-frontend
-      - build-backend
+      - build-frontend:
+          filters:
+            branches:
+              only: [master]
+      - build-backend:
+          filters:
+            branches:
+              only: [master]
       - test-frontend:
           requires: [build-frontend]
       - test-backend:
@@ -461,10 +467,7 @@ workflows:
       - scan-frontend:
           requires: [build-frontend]
       - deploy-infrastructure:
-          requires: [test-frontend, test-backend, scan-frontend, scan-backend]  
-          filters:
-            branches:
-              only: [dev-branch]
+          requires: [test-frontend, test-backend, scan-frontend, scan-backend]
       - configure-infrastructure:
           requires: [deploy-infrastructure]
       - run-migrations:
